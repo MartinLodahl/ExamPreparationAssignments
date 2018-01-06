@@ -1,0 +1,4 @@
+INSERT INTO names (name,surname,gender) VALUES ("Gilbert","Herve","male");
+INSERT INTO names (name,surname,gender) VALUES ("Florentina","Cioaca","female");
+INSERT INTO names (name,surname,gender) VALUES ("Eusebiu","Albu","male");
+INSERT INTO names (name,surname,gender) VALUES ("Norbert","Paunescu","male");

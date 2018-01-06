@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.flex-container {
+  padding: 1;
+  margin: 1;
+  list-style: none;
+  
+  display: -ms-flexbox;
+  display: flex;
+  width:98%;
+  height:100%;
+  
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
