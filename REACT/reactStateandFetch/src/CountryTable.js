@@ -62,13 +62,13 @@ class CountryTable extends Component {
             this.state.countries.map(function (names, i) {
               var timezone = '';
               if(names.timezones.length > 1){
-                timezone = '+ ' + names.timezones.length + 'more';
+                timezone = '+ ' + (names.timezones.length-1) + 'more';
               }else{
                 timezone = '';
               }
               var borders = '';
               if(names.borders.length > 1){
-                borders = '+ ' + names.borders.length + 'more';
+                borders = '+ ' + (names.borders.length-1) + 'more';
               }else{
                 borders = '';
               }
@@ -81,7 +81,7 @@ class CountryTable extends Component {
                   <td>{names.population}</td>
                   <td>{names.area}</td>
                   <td>{names.timezones[0] + " " + timezone}</td>
-                  <td>{names.borders[0] + " " + borders + ' more'}</td>
+                  <td>{names.borders[0] + " " + borders}</td>
                   <td>{names.topLevelDomain}</td>
                   <td>{names.currencies}</td>
                   <td>{names.languages[0]}</td>
