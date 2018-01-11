@@ -1,5 +1,6 @@
 import React from 'react';
 import data from "../data/data.json";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default class Details extends React.Component{
 
@@ -17,7 +18,7 @@ export default class Details extends React.Component{
 
   render(){
     return(
-      <div className="userProfile">
+      <div><div className="userProfile">
 
         <div className="header">
           <h3>Details for {data.users[this.state.index].first + " " + data.users[this.state.index].last}</h3>
@@ -54,6 +55,8 @@ export default class Details extends React.Component{
           <img src={data.users[this.state.index].picture.large} alt="image"/>
         </div>
 
+      </div>
+      <Link to={`/screens/Users`}> Back </Link>
       </div>
     );
   }

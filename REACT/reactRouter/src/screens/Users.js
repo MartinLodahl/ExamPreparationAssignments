@@ -2,7 +2,7 @@ import React from 'react';
 import data from "../data/data.json";
 import '../App.css';
 
-import { BrowserRouter as Router, Link } from "react-router-dom"
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default class Users extends React.Component{
 
@@ -41,7 +41,7 @@ export default class Users extends React.Component{
               );
             })
         }
-
+        <Link to={`/screens/Home`}> Back </Link>
       </div>
     );
   }

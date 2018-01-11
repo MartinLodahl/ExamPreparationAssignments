@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, NavLink, } from "react-router-d
 import Home from "./screens/Home";
 import Users from "./screens/Users";
 import Details from "./screens/Details";
-import Images from "./screens/Images";
+
 
 const App = () => (
   <Router>
@@ -14,8 +14,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path={`/screens/Details/:index`} render={props => <Details {...props}/>} />
-        <Route exact path="/screens/Users" component={Users} />
-        <Route exact path="/screens/Images" component={Images} />
+        <Route exact path="/screens/Users" component={Users} />        
       </Switch>
     </div>
   </Router>
