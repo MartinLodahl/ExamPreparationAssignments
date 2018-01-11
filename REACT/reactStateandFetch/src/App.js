@@ -15,9 +15,10 @@ class App extends Component {
         <div className="App-header">
           <h2>React, State, Fetch and Mobx</h2>
         </div>
-        <div className="App-intro">        
-          <CountryTable/>
-
+        <div className="App-intro">   
+        {
+          <CountryTable factory={this.props.factory}/>
+      }
         </div>
       </div>
     );

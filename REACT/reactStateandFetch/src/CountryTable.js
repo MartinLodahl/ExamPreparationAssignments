@@ -1,56 +1,43 @@
 import React, { Component } from "react";
 
 class CountryTable extends Component {
-  constructor(){
-    super();
-    this.state = {lable:[], countries:[] }
-  }
+  constructor(props){
+    super(props);
+    this.state = {labels:[], countries:[]};
+  }//this.props.lable
 
-  componentWillMount(){
-    this._getHeadlines();
-    this._getData();
-  }
+  componentWillMount(){ 
+    this.props.factory.getLabels((data) => {    
+      this.setState({ labels: data});
+    },)
 
-  _getHeadlines = () => {
-    const url = `http://localhost:3333/labels`;
-      fetch(url)
-        .then((res) => {
-          return res.json();
-        })
-        .then((json) => {
-          this.setState({ lable: json });
-        })
-        .catch((res) => {
-          alert('error');
-        })
+    this.props.factory.getCountries((data)=>{
+      this.setState({countries:data});
+    })
   }
-
-  _getData = () =>{
-    const url = `http://localhost:3333/countries`;
-      fetch(url)
-        .then((res) => {
-          return res.json();
-        })
-        .then((json) => {
-          this.setState({ countries: json });
-        })
-        .catch((res) => {
-          alert('error');
-        })
+  
+ /*
+  _getMultiColumn (data){
+    var columnName = "";
+    if(data.length > 1){
+      columnName = '+ ' + (data.length-1) + 'more';
+    }else{
+      columnName = '';
+    }
+    console.log(columnName);
+    return columnName;
   }
-
+*/
   render() {
-
-    
 
     return (
       <table className="table">
         <thead>
           <tr>
             {
-              this.state.lable.map(function (lables) {
+              this.state.labels.map(function (labels) {
                 return (
-                  <th key={lables}>{lables}</th>
+                  <th key={labels}>{labels}</th>
                 );
               })
             }
@@ -59,8 +46,12 @@ class CountryTable extends Component {
         
         <tbody>
           {
+            //getMultiColumn([1,2,3,4,5]);
+            
             this.state.countries.map(function (names, i) {
-              var timezone = '';
+             // var currencies = this.getMultiColumn(names.currencies);
+              var timezone ="";
+              
               if(names.timezones.length > 1){
                 timezone = '+ ' + (names.timezones.length-1) + 'more';
               }else{
@@ -75,20 +66,20 @@ class CountryTable extends Component {
 
               return (
                 <tr key={i}>
-                  <td>{names.name}</td>
-                  <td>{names.capital}</td>
-                  <td>{names.region}</td>
-                  <td>{names.population}</td>
-                  <td>{names.area}</td>
-                  <td>{names.timezones[0] + " " + timezone}</td>
-                  <td>{names.borders[0] + " " + borders}</td>
-                  <td>{names.topLevelDomain}</td>
-                  <td>{names.currencies}</td>
-                  <td>{names.languages[0]}</td>
-                </tr>
-              );
-            })
-          }
+                <td>{names.name}</td>
+                <td>{names.capital}</td>
+                <td>{names.region}</td>
+                <td>{names.population}</td>
+                <td>{names.area}</td>
+                <td>{names.timezones[0] + " " + timezone}</td>
+                <td>{names.borders[0] + " " + borders }</td>
+                <td>{names.topLevelDomain}</td>
+                <td>{names.currencies}</td>
+                <td>{names.languages[0]}</td>
+              </tr>
+            );
+          
+        })}
         </tbody>
       </table>
     );
