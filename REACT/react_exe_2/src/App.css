@@ -1,0 +1,55 @@
+body{
+  margin:40px;
+}
+.userCon{
+  width:500px;
+  height:100px;
+  background:#F8F8F8;
+  padding:5px;
+  margin-top:10px;
+}
+
+.userImg{
+  float:left;
+  height:100px;
+  width:100px;
+  background: #CCC;
+}
+.userImg img{
+  float:left;
+  width:100px;
+  height:100px;
+}
+
+.userTxt{
+  float:left;
+  margin:2px;
+}
+
+.details{
+  float:right;
+}
+
+.userProfile{
+  float:left;
+  width:700px;
+  padding:10px;
+  background: #F8F8F8;
+}
+
+ul li{
+  list-style-type:none;
+}
+
+.info{
+  float:left;
+  width:300px;
+}
+
+.profileImage{
+  float:right;
+  width:300px;
+  height:300px;
+}
+
+.randomImg{float: left; margin:10px}
