@@ -4,7 +4,7 @@ class CountryFactory {
   
   this.state = {lable:[], countries:[]}
 }
-//Kunne ikke få this.setState(sdas:sad) til at virke, når jeg kaldte countryFactory fra andre klasser
+//Kunne ikke få this.setState(X:Y) til at virke, når jeg kaldte fetch
 
 getLabels = (cb) =>{
  const url = `http://localhost:3333/labels`;

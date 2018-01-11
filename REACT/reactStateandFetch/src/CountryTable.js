@@ -3,8 +3,9 @@ import React, { Component } from "react";
 class CountryTable extends Component {
   constructor(props){
     super(props);
-    this.state = {labels:[], countries:[]};
-  }//this.props.lable
+    this.state = {labels:[], countries:[], newCountries: []};
+    this.getMultiColumn = this.getMultiColumn.bind(this);
+  }
 
   componentWillMount(){ 
     this.props.factory.getLabels((data) => {    
@@ -15,21 +16,37 @@ class CountryTable extends Component {
       this.setState({countries:data});
     })
   }
-  
- /*
-  _getMultiColumn (data){
+
+  checkIfCountriesUpdated=() =>{
+    var oldCountries =this.state.countries;
+    this.props.factory.getCountries((data)=>{
+     this.setState({newCountries:data});
+  });
+  var newCountries = this.state.newCountries;
+  var objectsAreSame = true;
+  for(var propertyName in newCountries) {
+    if(newCountries[propertyName] !== oldCountries[propertyName]) {
+       objectsAreSame = false;
+       break;
+    }
+ }
+ if(!objectsAreSame){
+   this.setState({countries:newCountries});
+ }
+}
+
+   getMultiColumn(data) {
     var columnName = "";
     if(data.length > 1){
       columnName = '+ ' + (data.length-1) + 'more';
     }else{
       columnName = '';
     }
-    console.log(columnName);
     return columnName;
   }
-*/
-  render() {
 
+  render() {
+    var update = setInterval(this.checkIfCountriesUpdated, 10000);
     return (
       <table className="table">
         <thead>
@@ -46,23 +63,15 @@ class CountryTable extends Component {
         
         <tbody>
           {
-            //getMultiColumn([1,2,3,4,5]);
+            
             
             this.state.countries.map(function (names, i) {
-             // var currencies = this.getMultiColumn(names.currencies);
-              var timezone ="";
               
-              if(names.timezones.length > 1){
-                timezone = '+ ' + (names.timezones.length-1) + 'more';
-              }else{
-                timezone = '';
-              }
-              var borders = '';
-              if(names.borders.length > 1){
-                borders = '+ ' + (names.borders.length-1) + 'more';
-              }else{
-                borders = '';
-              }
+             var currencies = this.getMultiColumn(names.currencies);
+             var topLevelDomain = this.getMultiColumn(names.topLevelDomain);
+             var timezone = this.getMultiColumn(names.timezones);
+             var borders = this.getMultiColumn(names.borders);
+             var languages = this.getMultiColumn(names.languages); 
 
               return (
                 <tr key={i}>
@@ -73,13 +82,13 @@ class CountryTable extends Component {
                 <td>{names.area}</td>
                 <td>{names.timezones[0] + " " + timezone}</td>
                 <td>{names.borders[0] + " " + borders }</td>
-                <td>{names.topLevelDomain}</td>
-                <td>{names.currencies}</td>
-                <td>{names.languages[0]}</td>
+                <td>{names.topLevelDomain[0] + " " + topLevelDomain}</td>
+                <td>{names.currencies[0] + " " + currencies}</td>
+                <td>{names.languages[0] + " " + languages}</td>
               </tr>
             );
           
-        })}
+        }, this)}
         </tbody>
       </table>
     );
