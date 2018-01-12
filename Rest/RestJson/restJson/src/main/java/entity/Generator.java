@@ -16,3 +16,8 @@ public class Generator {
         return sb.toString();
     }
 }
+
+//Hvis du har lettere ved at forholde dig til entity klasser, er JSON objekterne her, 
+//svarende til Person klassen i entity packagen. 
+//Men person bliver ikke brugt i Generatoren eller har noget med rest at gøre.
+
