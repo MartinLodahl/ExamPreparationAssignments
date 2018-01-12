@@ -27,15 +27,16 @@ public class Structure {
         //CRUD
         //Create - Read - Update - Delete
         em.getTransaction().begin();
-        em.persist(eb);
-        System.out.println(em.find(EBook.class, eb.getIsbn()).toString());
+        em.persist(eb); //Create
+        System.out.println(em.find(EBook.class, eb.getIsbn()).toString()); //Read
         eb.setAuthor("Stephan");
         eb.setDownloadUrl("CPHBUSINESS.DK");
         eb.setPrice(2323);
         eb.setSizeMB(222);
         eb.setTitle("En masse banditter");
-        em.merge(eb);
+        em.merge(eb); //Update
         System.out.println(em.find(EBook.class, eb.getIsbn()).toString());
+        //Polymorphism
         EBook eb1 = new EBook("Ali.DK", 2323, "Christians Lovløse Banditter", 29, "The bestest of best books");
         PaperBook pb2 = new PaperBook(25, true, "AliBaba", 29, "The Greatest of best books");
         EBook eb3 = new EBook("Svend-Ali.DK", 2323, "Svend-Alis bogklub", 29, "The story of a man called Daaaario");
@@ -51,7 +52,7 @@ public class Structure {
 
         em.getTransaction().begin();
         EBook ebr = em.find(EBook.class, eb.getIsbn());
-        em.remove(ebr);
+        em.remove(ebr); //Delete
         em.getTransaction().commit();
         em.close();
     }
