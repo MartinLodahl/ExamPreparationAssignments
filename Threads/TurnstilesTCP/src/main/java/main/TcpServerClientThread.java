@@ -14,6 +14,7 @@ public class TcpServerClientThread extends Thread {
     PrintWriter toClient;
     TurnstileCounter c;
     ArrayList<Turnstile> turns;
+    
 
     public TcpServerClientThread(Socket s, TurnstileCounter tc, ArrayList<Turnstile> turnstiles) {
         clientSocket = s;
@@ -42,7 +43,7 @@ public class TcpServerClientThread extends Thread {
                 } else if (clientInput.startsWith("SEE#")) {
                     toClient.print("Number of spectators: " + c.getValue());
                     for (int i = 0; i < turns.size(); i++) {
-                        toClient.print(" "+turns.get(i).getName() + " number count: " + turns.get(i).getCount());
+                        toClient.print(" "+turns.get(i).getRealName() + " number count: " + turns.get(i).getCount());
                     }
                     toClient.println(" ");
 

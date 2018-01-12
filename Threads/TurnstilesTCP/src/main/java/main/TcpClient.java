@@ -42,6 +42,9 @@ public class TcpClient {
                 toServer.println(input);
 
                 System.out.println("from server: " + fromServer.readLine());
+                if (input.equals("LEAVE#")) {
+                   break;
+                }
                 System.out.println("Client input:");
             }
 

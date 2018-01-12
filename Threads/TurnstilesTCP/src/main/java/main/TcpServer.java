@@ -26,7 +26,7 @@ public class TcpServer {
                     Turnstile t = new Turnstile(tc, 202, "turnstile" + i);
                     i++;
                     turnstiles.add(t);
-                    t.run();
+                    t.start();
                     new TcpServerClientThread(serverSocket.accept(), tc, turnstiles);
                 }
             } catch (Exception e) {

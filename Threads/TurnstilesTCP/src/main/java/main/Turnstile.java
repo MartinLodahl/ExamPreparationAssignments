@@ -1,6 +1,6 @@
 package main;
 
-public class Turnstile implements Runnable {
+public class Turnstile extends Thread {
 
     private final TurnstileCounter counter;
     //This represents the "local" counts done by a specific turnstille instance
@@ -16,8 +16,8 @@ public class Turnstile implements Runnable {
         this.name=name;
         
     }
-
-    public String getName() {
+//Thread har en final getName() der ikke kan overskrives;
+    public String getRealName() {
         return name;
     }
 
