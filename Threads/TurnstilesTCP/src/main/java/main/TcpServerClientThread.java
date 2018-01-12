@@ -25,11 +25,7 @@ public class TcpServerClientThread extends Thread {
     public void run() {
 
         System.out.println("Server log: New communication thread started...");
-        HashMap<String, String> translated = new HashMap();
-        translated.put("Hund", "Dog");
-        translated.put("Fløde", "Cream");
-        String name = "John";
-
+        
         try {
             toClient = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader fromClient = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
