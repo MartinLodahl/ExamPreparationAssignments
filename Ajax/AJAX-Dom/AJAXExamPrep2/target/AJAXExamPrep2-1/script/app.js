@@ -32,10 +32,9 @@ btnsql.onclick = function() {
         array.push(originalJson[i]);
     }
     array = array.map(function (x) {
-        return "INSERT INTO names (name,surname,gender) VALUES (\"" + x.name + "\",\"" + x.surname + "\",\"" + x.gender+"\")";
+        return "INSERT INTO names (name,surname,gender) VALUES (\"" + x.name + "\",\"" + x.surname + "\",\"" + x.gender+"\");";
     });
-    array = array.join(";&#13;&#10");
-    console.log(array);
+    array = array.join("&#13;&#10");
     document.getElementById("sql").innerHTML = array;
 };
 
